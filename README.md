@@ -12,7 +12,6 @@ See this blog for more details.
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
-## License
 
+### License 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
