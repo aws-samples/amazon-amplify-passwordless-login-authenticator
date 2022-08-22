@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C2BFCD328B342620087DC16 /* ModalView in Frameworks */ = {isa = PBXBuildFile; productRef = 5C2BFCD228B342620087DC16 /* ModalView */; };
 		5CE0E4EA28AD83A600C7E817 /* PasswordlessAmplifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0E4E928AD83A600C7E817 /* PasswordlessAmplifyApp.swift */; };
-		5CE0E4EC28AD83A600C7E817 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0E4EB28AD83A600C7E817 /* ContentView.swift */; };
 		5CE0E4EE28AD83A900C7E817 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE0E4ED28AD83A900C7E817 /* Assets.xcassets */; };
 		5CE0E4F128AD83A900C7E817 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE0E4F028AD83A900C7E817 /* Preview Assets.xcassets */; };
 		5CE0E4FD28AD840C00C7E817 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE0E4FC28AD840C00C7E817 /* AWSAPIPlugin */; };
@@ -17,8 +17,6 @@
 		5CE0E50428AD852D00C7E817 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CE0E50228AD852D00C7E817 /* awsconfiguration.json */; };
 		5CE0E50528AD852D00C7E817 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CE0E50328AD852D00C7E817 /* amplifyconfiguration.json */; };
 		5CE0E50828ADA64E00C7E817 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE0E50728ADA64E00C7E817 /* AWSCognitoAuthPlugin */; };
-		5CE0E50C28ADA95E00C7E817 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0E50B28ADA95E00C7E817 /* SignInView.swift */; };
-		5CE0E50E28ADAB4700C7E817 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0E50D28ADAB4700C7E817 /* SessionView.swift */; };
 		B8FB3464222CDBD13BF88136 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3493102EFC5E14738BF64FFF /* amplifyconfiguration.json */; };
 		E10F4D9534E47875E650D807 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 702BAA5D3275AF702BFA1C19 /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
@@ -27,13 +25,10 @@
 		3493102EFC5E14738BF64FFF /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		5CE0E4E628AD83A600C7E817 /* PasswordlessAmplify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordlessAmplify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE0E4E928AD83A600C7E817 /* PasswordlessAmplifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordlessAmplifyApp.swift; sourceTree = "<group>"; };
-		5CE0E4EB28AD83A600C7E817 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5CE0E4ED28AD83A900C7E817 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CE0E4F028AD83A900C7E817 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CE0E50228AD852D00C7E817 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		5CE0E50328AD852D00C7E817 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
-		5CE0E50B28ADA95E00C7E817 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		5CE0E50D28ADAB4700C7E817 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		702BAA5D3275AF702BFA1C19 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,6 +41,7 @@
 				5CE0E4FD28AD840C00C7E817 /* AWSAPIPlugin in Frameworks */,
 				5CE0E4FF28AD840C00C7E817 /* AWSDataStorePlugin in Frameworks */,
 				5CE0E50828ADA64E00C7E817 /* AWSCognitoAuthPlugin in Frameworks */,
+				5C2BFCD328B342620087DC16 /* ModalView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +71,6 @@
 				5CE0E50328AD852D00C7E817 /* amplifyconfiguration.json */,
 				5CE0E50228AD852D00C7E817 /* awsconfiguration.json */,
 				5CE0E4E928AD83A600C7E817 /* PasswordlessAmplifyApp.swift */,
-				5CE0E4EB28AD83A600C7E817 /* ContentView.swift */,
-				5CE0E50B28ADA95E00C7E817 /* SignInView.swift */,
-				5CE0E50D28ADAB4700C7E817 /* SessionView.swift */,
 				5CE0E4ED28AD83A900C7E817 /* Assets.xcassets */,
 				5CE0E4EF28AD83A900C7E817 /* Preview Content */,
 			);
@@ -122,6 +115,7 @@
 				5CE0E4FE28AD840C00C7E817 /* AWSDataStorePlugin */,
 				5CE0E50028AD840C00C7E817 /* Amplify */,
 				5CE0E50728ADA64E00C7E817 /* AWSCognitoAuthPlugin */,
+				5C2BFCD228B342620087DC16 /* ModalView */,
 			);
 			productName = PasswordlessAmplify;
 			productReference = 5CE0E4E628AD83A600C7E817 /* PasswordlessAmplify.app */;
@@ -154,6 +148,7 @@
 			packageReferences = (
 				5CE0E4FB28AD840C00C7E817 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 				5CE0E50628ADA64D00C7E817 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				5C2BFCD128B342620087DC16 /* XCRemoteSwiftPackageReference "modal-view" */,
 			);
 			productRefGroup = 5CE0E4E728AD83A600C7E817 /* Products */;
 			projectDirPath = "";
@@ -185,10 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CE0E50C28ADA95E00C7E817 /* SignInView.swift in Sources */,
-				5CE0E4EC28AD83A600C7E817 /* ContentView.swift in Sources */,
 				5CE0E4EA28AD83A600C7E817 /* PasswordlessAmplifyApp.swift in Sources */,
-				5CE0E50E28ADAB4700C7E817 /* SessionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +381,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5C2BFCD128B342620087DC16 /* XCRemoteSwiftPackageReference "modal-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/diniska/modal-view";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		5CE0E4FB28AD840C00C7E817 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
@@ -408,6 +408,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5C2BFCD228B342620087DC16 /* ModalView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C2BFCD128B342620087DC16 /* XCRemoteSwiftPackageReference "modal-view" */;
+			productName = ModalView;
+		};
 		5CE0E4FC28AD840C00C7E817 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5CE0E4FB28AD840C00C7E817 /* XCRemoteSwiftPackageReference "amplify-ios" */;
