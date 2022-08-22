@@ -10,84 +10,120 @@ import Combine
 import AWSCognitoAuthPlugin
 import Foundation
 
-class AuthService: ObservableObject {
-    @Published var isSignedIn = false
+struct ContentView : View {
+    @State var username: String = ""
+    @State var password: String = ""
+
+    @State var newUsername: String = ""
+    @State var newPassword: String = ""
+    @State var newEmail: String = ""
     
-    
-    func checkSessionStatus() {
-        _ = Amplify.Auth.fetchAuthSession { [weak self] result in
-            switch result {
-            case .success(let session):
-                DispatchQueue.main.async {
-                    self?.isSignedIn = session.isSignedIn
+    @State var signInCode: String = ""
+
+    @State var confirmationCode: String = ""
+    @State var confirmUserName: String = ""
+
+    var body: some View {
+        ScrollView {
+
+            VStack {
+                Group {
+                    Text("Welcome")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 20)
+                    
+                    TextField("Username", text: $username)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
+                    SecureField("Password", text: $password)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
+                    Button(action: {signIn(username: username, password: password)}) {
+                       LoginButtonContent()
+                    }
+                }
+                Group{
+                    TextField("Username", text: $newUsername)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
+                    SecureField("Password", text: $newPassword)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
+                    SecureField("Password", text: $newEmail)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
+                    Button(action: {signUp(username: newUsername, password: newPassword, email: newEmail)}) {
+                        SignUpButtonContent()
+                    }
+
                 }
                 
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+                Group {
+                    TextField("Confirm your sign in code", text: $signInCode)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
 
+                    Button(action: {customChallenge(response: signInCode)}){
+                        ConfirmSignInContent()
+                    }
+                }
+
+                Group{
+                    TextField("Confirm Username", text: $confirmUserName)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
     
-    private var window: UIWindow {
-        guard
-            let scene = UIApplication.shared.connectedScenes.first,
-            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
-            let window = windowSceneDelegate.window as? UIWindow
-        else {
-            return UIWindow()
+                    TextField("Confirmation Code", text: $confirmationCode)
+                        .padding()
+                        .cornerRadius(5.0)
+                        .padding(.bottom, 20)
 
-        }
-
-        return window
-    }
-
-
-    func webSignIn() {
-        _ = Amplify.Auth.signInWithWebUI(presentationAnchor: window) { result in
-            switch result {
-            case .success:
-                print("Signed in")
-
-            case .failure(let error):
-                print(error)
-            }
-//        _ = Amplify.Auth.signIn()
-//            .resultPublisher
-//            .sink {
-//                if case let .failure(authError) = $0 {
-//                    print("Sign in failed \(authError)")
-//                }
-//            }
-//            receiveValue: { result in
-//                if case .confirmSignInWithCustomChallenge(_) = result.nextStep {
-//                    // Ask the user to enter the custom challenge.
-//                } else {
-//                    print("Sign in succeeded")
-//                }
-//            }
-        }
-    }
-        
-        func observeAuthEvents() {
-            _ = Amplify.Hub.listen(to: .auth) { [weak self] result in
-                switch result.eventName {
-                case HubPayload.EventName.Auth.signedIn:
-                    DispatchQueue.main.async {
-                        self?.isSignedIn = true
+                    Button(action: {confirmSignUp(username: confirmUserName, confirmationCode: confirmationCode)}){
+                        ConfirmSignUpContent()
                     }
-                    
-                case HubPayload.EventName.Auth.signedOut,
-                     HubPayload.EventName.Auth.sessionExpired:
-                    DispatchQueue.main.async {
-                        self?.isSignedIn = false
-                    }
-                    
-                default:
-                    break
                 }
             }
+            .padding()
         }
+    }
+    
+    
+    func signIn(username: String, password: String) -> AnyCancellable {
+        Amplify.Auth.signIn(username: username, password: password)
+            .resultPublisher
+            .sink {
+                if case let .failure(authError) = $0 {
+                    print("Sign in failed \(authError)")
+                }
+            }
+            receiveValue: { result in
+                if case .confirmSignInWithCustomChallenge(_) = result.nextStep {
+                    // Ask the user to enter the custom challenge.
+                } else {
+                    print("Sign in succeeded")
+                }
+            }
+    }
+    
+    func customChallenge(response: String) -> AnyCancellable {
+        Amplify.Auth.confirmSignIn(challengeResponse: response)
+            .resultPublisher
+            .sink {
+                if case let .failure(authError) = $0 {
+                    print("Confirm sign in failed \(authError)")
+                }
+            }
+            receiveValue: { _ in
+                print("Confirm sign in succeeded")
+            }
     }
     
     func signUp(username: String, password: String, email: String) -> AnyCancellable {
@@ -110,8 +146,8 @@ class AuthService: ObservableObject {
             }
         return sink
     }
-
-    func confirmSignUp(for username: String, with confirmationCode: String) -> AnyCancellable {
+    
+    func confirmSignUp(username: String, confirmationCode: String) -> AnyCancellable {
         Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode)
             .resultPublisher
             .sink {
@@ -123,71 +159,76 @@ class AuthService: ObservableObject {
                 print("Confirm signUp succeeded")
             }
     }
+}
 
-    func customChallenge(response: String) -> AnyCancellable {
-        Amplify.Auth.confirmSignIn(challengeResponse: response)
-            .resultPublisher
-            .sink {
-                if case let .failure(authError) = $0 {
-                    print("Confirm sign in failed \(authError)")
-                }
-            }
-            receiveValue: { _ in
-                print("Confirm sign in succeeded")
-            }
+struct LoginButtonContent : View {
+    var body: some View {
+        return Text("Login")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.green)
+            .cornerRadius(15.0)
     }
+}
 
+struct SignUpButtonContent : View {
+    var body: some View {
+        return Text("Sign Up")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.blue)
+            .cornerRadius(15.0)
+    }
+}
 
+struct ConfirmSignInContent : View {
+    var body: some View {
+        return Text("Confirm Sign In")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.red)
+            .cornerRadius(15.0)
+    }
+}
+
+struct ConfirmSignUpContent : View {
+    var body: some View {
+        return Text("Confirm Sign Up")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.orange)
+            .cornerRadius(15.0)
+    }
+}
 
 @main
 struct PasswordlessAmplifyApp: App {
-    @ObservedObject var auth = AuthService()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    init() {
-        configureAmplify()
-        auth.checkSessionStatus()
+    
+    var body: some Scene {
+      WindowGroup {
+          ContentView()
+      }
     }
-    
-     var body: some Scene {
-         WindowGroup {
-             
-             if auth.isSignedIn {
-                 SessionView()
-                     .environmentObject(auth)
-             } else {
-                 SignInView()
-                     .environmentObject(auth)
-             }
-         }
-     }
-    
-    func configureAmplify() {
-        do {
-            try Amplify.add(plugin: AWSCognitoAuthPlugin())
-            try Amplify.configure()
-            print("Amplify configured")
-            
-        } catch {
-            print("Could not initialize Amplify -", error)
-        }
-    }
-
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         do {
-            try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.configure()
-            print("Amplify configured with auth plugin")
         } catch {
-            print("Failed to initialize Amplify with \(error)")
+            print("An error occurred setting up Amplify: \(error)")
         }
         return true
     }
 }
-
-
-
 
