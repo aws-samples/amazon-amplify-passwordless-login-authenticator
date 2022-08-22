@@ -1,17 +1,17 @@
-## My Project
 
-TODO: Fill this README out!
+# Passwordless Login with Amplify
 
-Be sure to:
 
-* Change the title in this README
-* Edit your repository description on GitHub
+![Preview of Application](./static/preview.png "Preview of iOS application")
+
+### Description
+This blog demonstrates the way to create a passwordless login flow built on top of Amplify. We are using SwiftUI in this example.
+See this blog for more details.
 
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
-## License
 
+### License 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
