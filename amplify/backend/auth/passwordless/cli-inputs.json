@@ -1,0 +1,60 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "passwordlessamplifyba0a1d6a_identitypool_ba0a1d6a",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "passwoba0a1d6a",
+    "userPoolName": "passwordlessamplifyba0a1d6a_userpool_ba0a1d6a",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "passwoba0a1d6a_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "ba0a1d6a",
+    "resourceName": "passwordless",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "CreateAuthChallenge": [
+        "boilerplate-create-challenge"
+      ],
+      "DefineAuthChallenge": [
+        "boilerplate-define-challenge"
+      ],
+      "VerifyAuthChallengeResponse": [
+        "boilerplate-verify"
+      ]
+    },
+    "hostedUI": false,
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-passwordlessamplify-dev-131712-authRole",
+      "UnauthRoleArn": "arn:aws:iam::098305555551:role/amplify-passwordlessamplify-dev-131712-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::098305555551:role/amplify-passwordlessamplify-dev-131712-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
+      "UnauthRoleName": "amplify-passwordlessamplify-dev-131712-unauthRole",
+      "StackName": "amplify-passwordlessamplify-dev-131712",
+      "StackId": "arn:aws:cloudformation:us-west-2:098305555551:stack/amplify-passwordlessamplify-dev-131712/95d13ab0-1e69-11ed-9104-06823ad8d989",
+      "AmplifyAppId": "dvgee7yp5zj68",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-passwordlessamplify-dev-131712-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "function": {
+        "passwordlessCreateAuthChallenge": {
+          "deploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
+          "s3Key": "amplify-builds/passwordlessCreateAuthChallenge-62484e7362744e303063-build.zip"
+        },
+        "passwordlessDefineAuthChallenge": {
+          "deploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
+          "s3Key": "amplify-builds/passwordlessDefineAuthChallenge-372f6a3775307853366d-build.zip"
+        },
+        "passwordlessVerifyAuthChallengeResponse": {
+          "deploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
+          "s3Key": "amplify-builds/passwordlessVerifyAuthChallengeResponse-563673507a5a426d7a71-build.zip"
+        }
+      },
+      "auth": {
+        "passwordless": {}
+      }
+    }
+  }
+}
