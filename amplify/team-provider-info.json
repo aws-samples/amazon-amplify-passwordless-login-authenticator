@@ -16,15 +16,15 @@
       "function": {
         "passwordlessCreateAuthChallenge": {
           "deploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
-          "s3Key": "amplify-builds/passwordlessCreateAuthChallenge-62484e7362744e303063-build.zip"
+          "s3Key": "amplify-builds/passwordlessCreateAuthChallenge-782f4542546647466442-build.zip"
         },
         "passwordlessDefineAuthChallenge": {
           "deploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
-          "s3Key": "amplify-builds/passwordlessDefineAuthChallenge-372f6a3775307853366d-build.zip"
+          "s3Key": "amplify-builds/passwordlessDefineAuthChallenge-3941614e614e2f4c4634-build.zip"
         },
         "passwordlessVerifyAuthChallengeResponse": {
           "deploymentBucketName": "amplify-passwordlessamplify-dev-131712-deployment",
-          "s3Key": "amplify-builds/passwordlessVerifyAuthChallengeResponse-563673507a5a426d7a71-build.zip"
+          "s3Key": "amplify-builds/passwordlessVerifyAuthChallengeResponse-4f397a58555250523133-build.zip"
         }
       },
       "auth": {
