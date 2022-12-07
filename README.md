@@ -1,6 +1,8 @@
 
 # Passwordless Login with Amplify
 
+Original Blog Post: https://aws.amazon.com/blogs/mobile/build-a-mobile-app-with-passwordless-login-on-top-of-aws-amplify/
+
 
 ![Preview of Application](./static/preview.png "Preview of iOS application")
 
